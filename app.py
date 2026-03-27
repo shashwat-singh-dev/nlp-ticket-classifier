@@ -1,4 +1,5 @@
 from fastapi import FastAPI
+from pydantic import BaseModel
 import pickle
 import re
 
@@ -31,14 +32,20 @@ def get_priority(text):
 def home():
     return {"message": "API is running 🚀"}
 
-@app.get("/predict")
-def predict(text: str):
+
+class Ticket(BaseModel):
+    text: str
+
+@app.post("/predict")
+def predict(ticket: Ticket):
+    text = ticket.text
+
     clean = clean_text(text)
     vec = vectorizer.transform([clean])
-    
+
     category = model.predict(vec)[0]
     priority = get_priority(clean)
-    
+
     return {
         "category": category,
         "priority": priority
