@@ -7,10 +7,6 @@ st.title("🎫 Ticket Classifier")
 
 text = st.text_input("Enter your issue:")
 
-st.title("🎫 Ticket Classifier")
-
-text = st.text_input("Enter your issue:")
-
 if st.button("Clear"):
     st.rerun()
 
