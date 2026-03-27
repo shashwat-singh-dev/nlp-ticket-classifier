@@ -5,51 +5,61 @@ API_URL = "https://nlp-ticket-classifier.onrender.com/predict"
 
 st.title("🎫 Ticket Classifier")
 
-def clear_text():
-    st.session_state.text = ""
-def set_sample(sample):
-    st.session_state.text = sample
+st.caption("Enter your issue or try a sample below 👇")
 
-if "text" not in st.session_state:
-    st.session_state.text = ""
-
+# INPUT
 text = st.text_input("Enter your issue:", key="text")
+
 st.markdown("### 💡 Try sample issues:")
 
 samples = [
-"Payment issue",
-"App crash",
-"Reset password",
-"Account hacked",
-"Slow app"
+    "Payment issue",
+    "App crash",
+    "Reset password",
+    "Account hacked",
+    "Slow app"
 ]
 
-cols = st.columns(len(samples))
+row1 = st.columns(3)
+row2 = st.columns(2)
 
-for i, sample in enumerate(samples):
-    cols[i].button(
-        sample,
-        on_click=set_sample,
-        args=(sample,)
-    )
+for i, sample in enumerate(samples[:3]):
+    row1[i].button(sample, on_click=set_sample, args=(sample,))
 
-st.button("Clear", on_click=clear_text)
+for i, sample in enumerate(samples[3:]):
+    row2[i].button(sample, on_click=set_sample, args=(sample,))
 
-if st.button("Predict"):
-    if not text.strip():
+# --------------------------
+# BUTTONS
+# --------------------------
+st.markdown("")
+
+col1, col2 = st.columns([1,1])
+
+with col1:
+    st.button("🧹 Clear", on_click=clear_text)
+
+with col2:
+    predict = st.button("🚀 Predict")
+
+# --------------------------
+# RESULT
+# --------------------------
+if predict:
+    if not st.session_state.text.strip():
         st.warning("Please enter an issue first")
     else:
-        with st.spinner("Processing..."):
+        with st.spinner("Analyzing your issue..."):
             try:
                 response = requests.post(
                     API_URL,
-                    json={"text": text},
+                    json={"text": st.session_state.text},
                     timeout=60
                 )
 
-                response.raise_for_status()
                 data = response.json()
 
+                st.divider()
                 st.markdown("### 🎯 Prediction Result")
 
                 col1, col2 = st.columns(2)
