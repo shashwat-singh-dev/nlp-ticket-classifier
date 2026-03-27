@@ -5,16 +5,18 @@ API_URL = "https://nlp-ticket-classifier.onrender.com/predict"
 
 st.title("🎫 Ticket Classifier")
 
-text = st.text_input("Enter your issue:")
+if "text" not in st.session_state:
+    st.session_state.text = ""
+
+text = st.text_input("Enter your issue:", key="text")
 
 if st.button("Clear"):
+    st.session_state.text = ""
     st.rerun()
 
 if st.button("Predict"):
-
     if not text.strip():
         st.warning("Please enter an issue first")
-
     else:
         with st.spinner("Processing..."):
             try:
@@ -23,14 +25,19 @@ if st.button("Predict"):
                     json={"text": text},
                     timeout=60
                 )
-        
+
                 response.raise_for_status()
                 data = response.json()
+
                 st.markdown("### 🎯 Prediction Result")
+
                 col1, col2 = st.columns(2)
+
                 with col1:
                     st.success(f"📂 Category\n\n**{data['category']}**")
+
                 with col2:
-                    st.info(f"⚡Priority\n\n**{data['priority']}**")
+                    st.info(f"⚡ Priority\n\n**{data['priority']}**")
+
             except Exception as e:
                 st.error(f"Error: {e}")
