@@ -5,6 +5,15 @@ API_URL = "https://nlp-ticket-classifier.onrender.com/predict"
 
 st.title("🎫 Ticket Classifier")
 
+def clear_text():
+    st.session_state.text = ""
+
+def set_sample(sample):
+    st.session_state.text = sample
+    
+if "text" not in st.session_state:
+    st.session_state.text = ""
+
 st.caption("Enter your issue or try a sample below 👇")
 
 # INPUT
