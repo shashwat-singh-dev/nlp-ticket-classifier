@@ -45,7 +45,8 @@ The goal of this project is to build an automated NLP-based system that can clas
 - `model.pkl` → Trained ML model  
 - `tfidf.pkl` → TF-IDF vectorizer  
 - `model_training.ipynb` → Model training notebook  
-- `requirements.txt` → Dependencies  
+- `requirements.txt` → Dependencies
+- `demo.png` → Screenshot of working application
 
 ---
 
