@@ -12,6 +12,21 @@ if "text" not in st.session_state:
     st.session_state.text = ""
 
 text = st.text_input("Enter your issue:", key="text")
+st.markdown("### 💡 Try sample issues:")
+
+samples = [
+    "payment not working",
+    "app crashes on login",
+    "unable to reset password",
+    "account hacked please help",
+    "slow performance issue"
+]
+
+cols = st.columns(len(samples))
+
+for i, sample in enumerate(samples):
+    if cols[i].button(sample):
+        st.session_state.text = sample
 
 st.button("Clear", on_click=clear_text)
 
