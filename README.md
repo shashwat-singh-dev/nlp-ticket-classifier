@@ -32,7 +32,7 @@ The goal of this project is to build an automated NLP-based system that can clas
 - Python  
 - Scikit-learn  
 - TF-IDF Vectorization  
-- Naive Bayes Classifier  
+- Logistic Regression  
 - FastAPI  
 - Streamlit  
 
