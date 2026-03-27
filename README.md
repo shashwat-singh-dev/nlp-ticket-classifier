@@ -26,6 +26,10 @@ The goal of this project is to build an automated NLP-based system that can clas
 ## 🎯 Demo
 
 ![App Demo](demo.png)
+## 🚀 Live Application
+
+The project is deployed and accessible here:  
+🔗 https://your-streamlit-link.streamlit.app
 
 ## 🛠️ Tech Stack
 
