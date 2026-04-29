@@ -1,6 +1,6 @@
 # 🧠 NLP Ticket Classifier
 
-## 📌 Problem Statementtttttttttttttttttttt
+## 📌 Problem Statement
 
 Customer support systems receive a large number of queries daily. Manually categorizing these tickets into appropriate departments (Billing, Technical, Security, etc.) is time-consuming and inefficient.
 
