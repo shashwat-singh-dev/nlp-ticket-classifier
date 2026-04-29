@@ -44,7 +44,7 @@ The project is deployed and accessible here:
 
 ---
 
-## 📁 Files Includeddddddddddddddddddd
+## 📁 Files Included
 
 - `app.py` → FastAPI backend  
 - `ui.py` → Streamlit frontend  
