@@ -8,7 +8,7 @@ The goal of this project is to build an automated NLP-based system that can clas
 
 ---
 
-## 🚀 Featuresssssssssssssss
+## 🚀 Featuresssssssssssssssssssssssssssssss
 
 - Classifies support tickets into:
   - Billing
